@@ -1,17 +1,15 @@
-import React, { Component } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 
-export class ProductsListButtons extends Component{
-    static propTypes = {
-        onAddClicked: PropTypes.func,
-    }
+export const ProductsListButtons = (props) => {
+    // static propTypes = {
+    //     onAddClicked: PropTypes.func,
+    // }
 
-    render(){
-        return (
-            <div>
-                <button 
-                onClick={this.props.onAddClicked}>Add product</button>
-            </div>
-        );
-    }
+    return (
+        <div>
+            <button 
+            onClick={props.onAddClicked}>Add product</button>
+        </div>
+    );
 }

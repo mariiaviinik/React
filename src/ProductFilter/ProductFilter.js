@@ -1,16 +1,14 @@
-import React, { Component } from "react";
+import React from "react";
 
 
-export class ProductFilter extends Component{
-    render(){
-        return (
-            <div>
-                <p>{this.props.text}</p>
-                    <input onChange={(e) => {
-                        this.props.filterProduct(e.target.value, 
-                        this.props.criterion)}} 
-                    />
-            </div>
-        );
-    }
+export const ProductFilter = (props) => {
+    return (
+        <div>
+            <p>{props.text}</p>
+                <input onChange={(e) => {
+                    props.filterProduct(e.target.value, 
+                    props.criterion)}} 
+                />
+        </div>
+    );
 }
