@@ -151,7 +151,7 @@ const App = () => {
       {isAddModalVisible ?
         <AddProductModal 
           onAddItemClick={ onAddItem } 
-          onCloseAddProductModalClick={ onModalClose}
+          onCloseAddProductModalClick={onModalClose}
           onEditItemClick={onApplyEditProduct}
           product={editingProduct}
         /> 

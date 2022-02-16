@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
+import PropTypes from "prop-types";
 
 const categoriesState = {
     categories: [
@@ -22,19 +23,33 @@ const categoriesState = {
     ],
 }
 
-export const SelectProductCategory = (props) => {
+export const SelectProductCategory = ({selctedItem, getCategory}) => {
+    SelectProductCategory.propTypes = {
+        selctedItem: PropTypes.string,
+        getCategory: PropTypes.func,
+    }
+
     const [categories, setCategories] = useState(categoriesState.categories);
+     
+    const onSelectChange =useCallback((e) => {
+        getCategory(e.target.value);
+    }, [getCategory])
 
     return (
         <select 
-            value={props.selctedItem}
-            onChange={(e) => {props.getCategory(e.target.value)}} 
+            value={selctedItem}
+            onChange={onSelectChange} 
         >
             <option hidden>Select category</option>
             { 
                 categories.map(category => {
                     return(
-                        <option value={category.categoryName} key={category.categoryId}>{category.categoryName}</option>
+                        <option
+                            value={category.categoryName} 
+                            key={category.categoryId}
+                        >
+                            {category.categoryName}
+                        </option>
                     );
                 })
             }

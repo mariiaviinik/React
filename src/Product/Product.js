@@ -1,16 +1,28 @@
-import React from "react";
+import React, { useCallback } from "react";
+import PropTypes from "prop-types";
 
-export const Product = (props) => {
+export const Product = ({product, productId, onDelete, onEdit}) => {
+    Product.propTypes = {
+        product: PropTypes.object,
+        productId: PropTypes.string,
+        onDelete: PropTypes.func, 
+        onEdit: PropTypes.func, 
+    }
+        
+    const onDeleteClick = useCallback(() => {onDelete(productId)}, [onDelete])
+
+    const onEditClick = useCallback(() => {onEdit(productId)}, [onDelete])
+
     return (
         <tr>
-            <td>{props.product?.name || ''}</td>
-            <td>{props.product?.category.categoryName || ''}</td>
-            <td>{props.product?.price || ''}</td>
+            <td>{product?.name || ''}</td>
+            <td>{product?.category.categoryName || ''}</td>
+            <td>{product?.price || ''}</td>
             <td>
-                <button onClick={props.onDelete}>Delete</button>
+                <button onClick={onDeleteClick}>Delete</button>
             </td>
             <td>
-                <button onClick={props.onEdit}>Edit</button>
+                <button onClick={onEditClick}>Edit</button>
             </td>
         </tr>
     ); 
