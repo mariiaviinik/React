@@ -80,7 +80,7 @@ const App = () => {
         }
       ]
     );
-  }, [setIsAddModalVisible, setProducts, products])
+  }, [products])
 
   const filterProducts = useCallback((substr, criterion) => {
     if(!substr){
@@ -96,25 +96,26 @@ const App = () => {
           if(currentCriterion.indexOf(substr) !== -1){
             return product;
           }
+          return null;
         })
       );
     }
-  }, [setIsFilterField, setFilteredItems, products])
+  }, [products])
 
   const onDeleteProduct = useCallback((id) => {
     setProducts(products.filter(product => product.id !== id));
-  }, [setProducts, products])
+  }, [products])
   
   const onEditProduct = useCallback((id) => {
     const product = products.find(product => product.id === id);
     setIsAddModalVisible(true);
     setEditingProduct(product);
-  }, [setIsAddModalVisible, products])
+  }, [products])
   
   const onModalClose = useCallback(() => {
     setIsAddModalVisible(false);
     setEditingProduct(null);
-  }, [setIsAddModalVisible])
+  }, [])
   
   const onApplyEditProduct = useCallback((product) => {
     setProducts(
@@ -126,7 +127,7 @@ const App = () => {
       })
     );
     onModalClose(); 
-  }, [setProducts, onModalClose, products])
+  }, [onModalClose, products])
 
   const onModalVisible = useCallback(() => {setIsAddModalVisible(true)}, [setIsAddModalVisible])
 

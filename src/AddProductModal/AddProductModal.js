@@ -16,15 +16,15 @@ export const AddProductModal = ({onAddItemClick, onCloseAddProductModalClick, on
 
     const onNameInputChange = useCallback((e) => {
         setName(e.target.value)
-    }, [setName])
+    }, [])
 
     const onSelectChangeCategory = useCallback((cat) => {
         setCategory({...category, categoryName:  cat})
-    }, [setCategory, category])
+    }, [category])
 
     const onPriceInputChange = useCallback((e) => {
         setPrice(e.target.value)
-    }, [setPrice])
+    }, [])
 
     const onButtonClose = useCallback((e) => {
         e.preventDefault();
