@@ -20,7 +20,7 @@ export const AddProductModal = ({onAddItemClick, onCloseAddProductModalClick, on
 
     const onSelectChangeCategory = useCallback((cat) => {
         setCategory({...category, categoryName:  cat})
-    }, [setCategory])
+    }, [setCategory, category])
 
     const onPriceInputChange = useCallback((e) => {
         setPrice(e.target.value)

@@ -104,7 +104,18 @@ const App = () => {
   const onDeleteProduct = useCallback((id) => {
     setProducts(products.filter(product => product.id !== id));
   }, [setProducts, products])
-
+  
+  const onEditProduct = useCallback((id) => {
+    const product = products.find(product => product.id === id);
+    setIsAddModalVisible(true);
+    setEditingProduct(product);
+  }, [setIsAddModalVisible, products])
+  
+  const onModalClose = useCallback(() => {
+    setIsAddModalVisible(false);
+    setEditingProduct(null);
+  }, [setIsAddModalVisible])
+  
   const onApplyEditProduct = useCallback((product) => {
     setProducts(
       products.map(stateProduct => {
@@ -115,19 +126,8 @@ const App = () => {
       })
     );
     onModalClose(); 
-  }, [setProducts, products])
+  }, [setProducts, onModalClose, products])
 
-  const onEditProduct = useCallback((id) => {
-    const product = products.find(product => product.id === id);
-    setIsAddModalVisible(true);
-    setEditingProduct(product);
-  }, [setIsAddModalVisible, products])
-
-  const onModalClose = useCallback(() => {
-    setIsAddModalVisible(false);
-    setEditingProduct(null);
-  }, [setIsAddModalVisible])
-  
   const onModalVisible = useCallback(() => {setIsAddModalVisible(true)}, [setIsAddModalVisible])
 
   return (

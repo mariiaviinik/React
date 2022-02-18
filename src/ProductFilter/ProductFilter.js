@@ -11,7 +11,7 @@ export const ProductFilter = ({text, criterion, filterProduct}) => {
 
     const onInputChange = useCallback((e) => {
         filterProduct(e.target.value, criterion)
-    }, [filterProduct])
+    }, [filterProduct, criterion])
 
     return (
         <div>

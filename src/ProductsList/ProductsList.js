@@ -11,7 +11,7 @@ export const ProductsList = ({products, onDeleteProduct, onEditProduct}) => {
 
     const onDelete = useCallback((productItem) => {onDeleteProduct(productItem)}, [onDeleteProduct])
 
-    const onEdit = useCallback((productItem) => {onEditProduct(productItem)}, [onDeleteProduct])
+    const onEdit = useCallback((productItem) => {onEditProduct(productItem)}, [onEditProduct])
 
     return (
         <table>

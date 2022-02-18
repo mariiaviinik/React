@@ -9,9 +9,9 @@ export const Product = ({product, productId, onDelete, onEdit}) => {
         onEdit: PropTypes.func, 
     }
         
-    const onDeleteClick = useCallback(() => {onDelete(productId)}, [onDelete])
+    const onDeleteClick = useCallback(() => {onDelete(productId)}, [onDelete, productId])
 
-    const onEditClick = useCallback(() => {onEdit(productId)}, [onDelete])
+    const onEditClick = useCallback(() => {onEdit(productId)}, [onEdit, productId])
 
     return (
         <tr>
