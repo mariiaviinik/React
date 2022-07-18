@@ -10,6 +10,7 @@ import { Routes, Route, Link } from 'react-router-dom';
 const style = {
   width: '400px',
   display: 'flex',
+  marginBottom: '10px',
   justifyContent: 'space-around',
 }
 
