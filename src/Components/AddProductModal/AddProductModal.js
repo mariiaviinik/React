@@ -6,6 +6,7 @@ import { selectEditingProduct } from "../../Store/Products/selector";
 import { v4 as uuidv4 } from "uuid";
 import { addProductAction, editProductAction, 
     setEditingProductAction } from "../../Store/Products/actions";
+import { useNavigate } from 'react-router-dom';
 
 export const AddProductModal = () => {
     const editingProduct = useSelector(selectEditingProduct);
@@ -14,7 +15,7 @@ export const AddProductModal = () => {
     const [price, setPrice] = useState(editingProduct?.price || "");
 
     const dispatch = useDispatch();
-    
+    const navigate = useNavigate();    
     
     const onNameInputChange = useCallback((e) => {
         setName(e.target.value)
@@ -40,7 +41,7 @@ export const AddProductModal = () => {
         : dispatch(addProductAction({...product, id: uuidv4()}));
 
         dispatch(setEditingProductAction(""));
-        dispatch(closeModalAction());
+        navigate("/");
     }, [dispatch, editingProduct])
 
     return (
@@ -53,9 +54,9 @@ export const AddProductModal = () => {
 
             <p>Category:</p>
             <p>
-            <SelectProductCategory 
-                    selectedItem={category.categoryName}
-                    getCategory={onSelectChangeCategory}
+                <SelectProductCategory 
+                        selectedItem={category.categoryName}
+                        getCategory={onSelectChangeCategory}
                 />
             </p>
             <p>Price:</p>

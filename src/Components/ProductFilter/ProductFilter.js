@@ -1,26 +1,25 @@
 import "./ProductFilter.css";
 import React, { useCallback } from "react";
 import PropTypes from "prop-types";
-import { useDispatch } from "react-redux";
-import { filterProductAction, setFilterFieldAction } from "../../Store/Products/actions"
+import { useNavigate } from "react-router-dom";
 
 
-export const ProductFilter = ({criterion}) => {
+export const ProductFilter = () => {
     ProductFilter.propTypes = {
         criterion: PropTypes.string,
     }
 
-    const dispatch = useDispatch();
+    const navigate = useNavigate();
 
-    const onInputChange = useCallback((e) => {
-        dispatch(setFilterFieldAction(e.target.value));
-        dispatch(filterProductAction(criterion));
-    }, [dispatch, criterion])
+    const onFilterSearch = useCallback((e) => {
+        navigate("/filter/" + e.target.previousElementSibling.value);
+    }, [navigate])
 
     return (
         <div className="filter">
-            <span>Filter by {criterion}:</span>
-                <input className="input" onChange={onInputChange} />
+            <span>Filter by category:</span>
+                <input className="input" />
+            <button onClick={onFilterSearch}>Search</button>
         </div>
     );
 }

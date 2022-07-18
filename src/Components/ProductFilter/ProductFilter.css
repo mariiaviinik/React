@@ -1,5 +1,6 @@
 .filter{
     margin: 0 0 10px;
+    display: flex;
 }
 .input{
     margin: 0 0 0 10px;
