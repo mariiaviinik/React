@@ -4,6 +4,12 @@ import { useDispatch } from "react-redux";
 import { useCallback, useState } from "react";
 import { addCategory, deleteCategory } from "../../Store/Categories/actions"
 import { SelectProductCategory } from "../SelectProductCategory/SelectProductCategory"
+import { Button, TextField } from '@mui/material';
+
+const  style = {
+    display: 'flex', 
+    alignItems: 'flex-end'
+}
 
 export const CategoriesEditor = () => {
 
@@ -35,13 +41,21 @@ export const CategoriesEditor = () => {
 
     return (
         <div className="holder">
-            <div>
-                <input value={addCategoryName} onChange={getValue} />
-                    <button onClick={onAddCategory}>Add category</button>
+            <div style={style}>
+                <TextField 
+                    label="Category name" 
+                    variant="standard" 
+                    value={addCategoryName} 
+                    onChange={getValue}
+                />
+                <Button variant="text" size="middle" onClick={onAddCategory}>Add category</Button>
             </div>
-            <div>
-                <SelectProductCategory getCategory={onSelectChangeCategory}/>
-                    <button onClick={onDeleteCategory}>Delete category</button>
+            <div style={style}>
+            <SelectProductCategory 
+                selectedItem={''}
+                getCategory={onSelectChangeCategory}
+            />
+                <Button variant="text" size="middle" onClick={onDeleteCategory}>Delete category</Button>
             </div>
         </div>
     );

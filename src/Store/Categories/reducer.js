@@ -1,26 +1,10 @@
-import { ADD_CATEGORY_ACTION,
-    DELETE_CATEGORY_ACTION } from "./actions"
-import { v4 as uuidv4 } from "uuid";
+import { 
+    ADD_CATEGORY_ACTION,
+    DELETE_CATEGORY_ACTION 
+} from "./actions"
 
 const initialSatete = {
-    categories: [
-        {
-            categoryId: uuidv4(),
-            categoryName: "technics",
-        },
-        {
-            categoryId: uuidv4(),
-            categoryName: "cosmetic",
-        },
-        {
-            categoryId: uuidv4(),
-            categoryName: "book",
-        },
-        {
-            categoryId: uuidv4(),
-            categoryName: "for home",
-        },
-    ],
+    categories: ["technics", "cosmetic", "book", "for home", "food"]
 }
 
 export const categoriesReducer = (state=initialSatete, action) => {
@@ -28,16 +12,15 @@ export const categoriesReducer = (state=initialSatete, action) => {
         case ADD_CATEGORY_ACTION:
             return {...state,
                 categories: [
-                ...state.categories,
-                {
-                    categoryId: uuidv4(),
-                    categoryName: action.categoryName,
-                }]
+                    ...state.categories,
+                    action.category,
+                ]
             };
         case DELETE_CATEGORY_ACTION:
             return {...state,
                 categories: state.categories.filter((category) => {
-                    if(category.categoryName !== action.categoryName) return category;
+                    if(category !== action.category) return category;
+                    return null;
                 })
             };
         default: return state;

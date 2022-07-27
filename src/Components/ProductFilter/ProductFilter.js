@@ -2,7 +2,7 @@ import "./ProductFilter.css";
 import React, { useCallback } from "react";
 import PropTypes from "prop-types";
 import { useNavigate } from "react-router-dom";
-
+import { Button, TextField } from '@mui/material';
 
 export const ProductFilter = () => {
     ProductFilter.propTypes = {
@@ -17,9 +17,15 @@ export const ProductFilter = () => {
 
     return (
         <div className="filter">
-            <span>Filter by category:</span>
+            <TextField 
+                id="standard-basic" 
+                label="Filter by category" 
+                variant="standard" 
+            />
+                <Button variant="text" size="middle" onClick={onFilterSearch}>Search</Button>
+            {/* <span>Filter by category:</span>
                 <input className="input" />
-            <button onClick={onFilterSearch}>Search</button>
+            <button onClick={onFilterSearch}>Search</button> */}
         </div>
     );
 }
